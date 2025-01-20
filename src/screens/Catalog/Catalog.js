@@ -41,6 +41,7 @@ function Catalog() {
     const handleLaunch = () => {
         const selectedWithDiscounts = selectedItems.map(item => ({
             vendorCode: item.vendorCode,
+            discountedPrice: item.discountedPrice,
             nmID: item.nmID,
             currentPrice: item.sizes[0].price,
             discount: itemDiscounts[item.vendorCode] || 0,
@@ -60,7 +61,8 @@ function Catalog() {
             const val = _finalBackendQuery.items.map((item) => ({
                 price: item.discount * (item.price / item.discountedPrice),
                 prevPrice: parseInt(item.currentPrice),
-                id: parseInt(item.nmID)
+                id: parseInt(item.nmID),
+                discountedPrice: item.discountedPrice,
             }));
 
             setFbq({

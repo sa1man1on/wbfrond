@@ -1,0 +1,26 @@
+.Login{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.Button{
+  padding: 6px;
+  outline: none;
+  border: none;
+  background-color: #d94dff;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.logout{
+  background-color: #ff4d5c;
+}
+
+.Input{
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 4px;
+}

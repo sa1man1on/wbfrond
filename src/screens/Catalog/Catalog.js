@@ -58,7 +58,7 @@ function Catalog() {
                 items: itemsToBackend
             };
             const val = _finalBackendQuery.items.map((item) => ({
-                price: item.discount,
+                price: item.discount * 1.1627906976744187,
                 prevPrice: parseInt(item.currentPrice),
                 id: parseInt(item.nmID)
             }));

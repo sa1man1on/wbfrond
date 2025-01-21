@@ -44,7 +44,7 @@ function Catalog() {
             discOUNTI: item.discount,
             discountedPrice: item.discountedPrice,
             nmID: item.nmID,
-            currentPrice: item.sizes[0].price,
+            currentPrice: itemDiscounts[item.vendorCode] || 0,
             discount: itemDiscounts[item.vendorCode] || 0,
             newPrice:
                 item.sizes[0].price *
@@ -60,8 +60,9 @@ function Catalog() {
                 cycles: parseInt(cycles),
                 items: itemsToBackend
             };
+
             const val = _finalBackendQuery.items.map((item) => ({
-                price:  parseInt(item.currentPrice * ((item.discOUNTI/100)+1)) ,
+                price: parseInt((item.currentPrice * 100)/(100 - item.discOUNTI)),
                 prevPrice: parseInt(item.currentPrice),
                 id: parseInt(item.nmID),
             }));
@@ -293,8 +294,8 @@ function Catalog() {
                                         <br/>
                                         <strong>ID:</strong> {item.nmID}
                                         <br/>
-                                        <strong>Цена сейчас:</strong>  <NumberFormatter value={item.currentPrice}></NumberFormatter>  Руб
-                                        <br/>
+                                        {/*<strong>Цена сейчас:</strong>  <NumberFormatter value={item.currentPrice}></NumberFormatter>  Руб*/}
+                                        {/*<br/>*/}
                                         <strong>Новая цена:</strong> <NumberFormatter value={item.discount}></NumberFormatter> Руб
 
                                     </li>
